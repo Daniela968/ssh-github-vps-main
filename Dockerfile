@@ -1,30 +1,24 @@
-FROM kalilinux/kali-rolling
+FROM ubuntu:jammy
 
 #https://github.com/moby/moby/issues/27988
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
+RUN apt-get update; apt-get install -y wget curl net-tools bmon htop netcat-traditional pciutils; apt-get clean && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /usr
 
-#https://github.com/moby/moby/issues/27988
-RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+# Install Go
 
-RUN apt-get update
+ENV GO_VERSION=1.21.4
 
-RUN apt-get install -y wget curl net-tools unzip ssh  whois netcat-traditional pciutils bmon htop tor
+RUN curl -sSLO https://go.dev/dl/go$GO_VERSION.linux-amd64.tar.gz; tar -C /usr/local -xzf go$GO_VERSION.linux-amd64.tar.gz; rm -rf go$GO_VERSION.linux-amd64.tar.gz
 
-#Sets WORKDIR to /usr
+ENV PATH="/usr/local/go/bin:${PATH}"
 
-WORKDIR /  ROOT
+# Install language dependencies
 
+RUN apt-get update; apt-get -y install python3-pip npm nodejs
 
-# Sherlock
-# https://github.com/sherlock-project/sherlock
-
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
-
-# prevent interactive prompts
-ENV DEBIAN_FRONTEND=noninteractive
 
 # update dependencies
 RUN apt update
@@ -51,3 +45,4 @@ CMD  /start
 
 VOLUME /config
 EXPOSE 3000
+CMD ["/bin/bash"]
