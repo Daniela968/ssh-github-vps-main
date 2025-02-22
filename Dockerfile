@@ -1,5 +1,8 @@
+FROM kalilinux/kali-rolling
 
-FROM parrotsec/core
+#https://github.com/moby/moby/issues/27988
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
 
 
 #https://github.com/moby/moby/issues/27988
