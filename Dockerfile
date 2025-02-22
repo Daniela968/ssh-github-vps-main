@@ -20,10 +20,6 @@ ENV PATH="/usr/local/go/bin:${PATH}"
 RUN apt update
 RUN apt upgrade -y
 
-
-# Define arguments and environment variables
-ARG AUTH_TOKEN
-ARG PASSWORD
 RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux-amd64.zip
 RUN unzip ngrok.zip
 RUN echo "./ngrok config add-authtoken ${NGROK_TOKEN} &&" >>/start
