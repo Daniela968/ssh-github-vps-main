@@ -13,9 +13,6 @@ jobs:
         env:
           AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
           PASSWORD: ${{ secrets.PASSWORD }}
-
-         run: bash ./a.sh 
-         shell: bash
         
       - name: Sleep
         run: sleep 6h    
