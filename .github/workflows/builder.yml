@@ -13,9 +13,7 @@ jobs:
         env:
           AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
           PASSWORD: ${{ secrets.PASSWORD }}
-            with:
-            cache-from: type=gha
-            cache-to: type=gha,mode=max
+         
       - name: Sleep
         run: sleep 6h 
           
