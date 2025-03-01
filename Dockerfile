@@ -1,6 +1,6 @@
 FROM artis3n/kali:latest-no-wordlists
 #https://github.com/moby/moby/issues/27988
-RUNENV LANG en_US.utf8
+RUN ENV LANG en_US.utf8
 
 # Define arguments and environment variables
 ARG NGROK_TOKEN
