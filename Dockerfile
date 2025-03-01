@@ -1,4 +1,4 @@
-FROM ubuntu-20.04
+FROM artis3n/kali:latest-no-wordlists
 #https://github.com/moby/moby/issues/27988
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
