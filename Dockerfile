@@ -17,7 +17,8 @@ RUN echo "./ngrok tcp --region ap 22 &>/dev/null &" >>/start
 RUN echo '/usr/sbin/sshd -D' >>/start
 RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config 
 RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
-RUN echo root:kaal|chpasswd
+RUN ["chmod", "+x", "./entrypoint.sh"]
+
 RUN sudo service ssh start
 EXPOSE 80 8888 8080 443 5130 5131 5132 5133 5134 5135 3306
 CMD ["/a.sh"]
