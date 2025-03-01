@@ -1,4 +1,4 @@
-FROM artis3n/kali:latest-no-wordlists
+FROM artis3n/kali:latest
 #https://github.com/moby/moby/issues/27988
 RUN ENV LANG en_US.utf8
 
