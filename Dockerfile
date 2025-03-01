@@ -35,4 +35,8 @@ RUN service ssh start
 RUN chmod 755 /start
 EXPOSE 80 8888 8080 443 5130 5131 5132 5133 5134 5135 3306
 CMD  /start
+EXPOSE 80 443 9050 8888 53 3000 9050 8888 3306 8118
+
+CMD ["/linux-ssh.sh"]
+CMD ["/bin/bash"]
 CMD ["/bin/bash"]
