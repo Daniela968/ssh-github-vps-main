@@ -7,7 +7,6 @@ RUN apt-get update; apt-get install -y wget ssh unzip wget curl net-tools bmon h
 WORKDIR /root
 
 # Install Go
-ENV NGROK_TIMEOUT: 25001
 ENV SSH_PASS
 ENV NGROK_AUTH_TOKEN
 ENV PATH="/usr/local/go/bin:${PATH}"
