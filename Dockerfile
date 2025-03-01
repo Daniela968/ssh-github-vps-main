@@ -6,9 +6,6 @@ RUN apt-get update; apt-get install -y wget ssh unzip wget curl net-tools bmon h
 
 WORKDIR /root
 
-# Install Go
-ENV SSH_PASS
-ENV NGROK_AUTH_TOKEN
 ENV PATH="/usr/local/go/bin:${PATH}"
 RUN apt update
 RUN apt upgrade -y
@@ -29,5 +26,4 @@ CMD  /start
 EXPOSE 80 443 9050 8888 53 3000 9050 8888 3306 8118
 
 CMD ["/linux-ssh.sh"]
-CMD ["/bin/bash"]
 CMD ["/bin/bash"]
