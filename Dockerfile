@@ -14,7 +14,6 @@ RUN wget -O ngrok.zip https://bin.equinox.io/c/bNyj1mQVY4c/ngrok-v3-stable-linux
 RUN unzip ngrok.zip
 RUN echo "./ngrok config add-authtoken ${NGROK_TOKEN} &&" >>/start
 RUN echo "./ngrok tcp --region ap 22 &>/dev/null &" >>/start
-RUN mkdir /run/sshd
 RUN echo '/usr/sbin/sshd -D' >>/start
 RUN echo 'PermitRootLogin yes' >>  /etc/ssh/sshd_config 
 RUN echo "PasswordAuthentication yes" >> /etc/ssh/sshd_config
