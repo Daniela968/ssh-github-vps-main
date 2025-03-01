@@ -5,7 +5,7 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 RUN apt-get update; apt-get install -y wget ssh unzip wget curl net-tools bmon htop netcat-traditional pciutils; apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root
-
+USER root
 ENV PATH="/usr/local/go/bin:${PATH}"
 RUN apt update
 RUN apt upgrade -y
