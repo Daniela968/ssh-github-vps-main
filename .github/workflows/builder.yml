@@ -1,22 +1,21 @@
 name: 'Run SSH4Me'
-            on:
-              workflow_dispatch
-            jobs:
-              build-and-run:
-                runs-on: ubuntu-24.04
-                steps:
-                  - name: Checkout repository
-                    uses: actions/checkout@v4
-                  - name: Run SSH4Me Action
-                    uses: Jisan09/SSH4Me@main
-          
-                      env:
-                      AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
-                      PASSWORD: ${{ secrets.PASSWORD }}
-                  - name: Sleep
-                    run: sleep 6h   
-                    with:
-                   cache-from: type=gha
-                    cache-to: type=gha,mode=max  
-                    
+on:
+  workflow_dispatch:
+jobs:
+  build-and-run:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run SSH4Me Action
+        uses: Jisan09/SSH4Me@main
+        env:
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+            with:
+            cache-from: type=gha
+            cache-to: type=gha,mode=max
+      - name: Sleep
+        run: sleep 6h 
           
