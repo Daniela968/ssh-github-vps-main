@@ -11,14 +11,7 @@ WORKDIR /root
 ENV NGROK_TIMEOUT: 25001
 ENV SSH_PASS
 ENV NGROK_AUTH_TOKEN
-
 ENV PATH="/usr/local/go/bin:${PATH}"
-
-# Install language dependencies
-
-
-
-# update dependencies
 RUN apt update
 RUN apt upgrade -y
 
